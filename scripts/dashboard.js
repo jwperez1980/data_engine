@@ -130,34 +130,50 @@ var ProjectList = {
     */
     displayExternalData: function (serviceAPI, columnNames, data) {
 
-        if (serviceAPI != null && serviceAPI != 'Undefined' && serviceAPI != "")
-            this.serviceAPI = serviceAPI;
+        dashboardColumns = {};
 
-        /* all controllers must have a CreqteColumns action */
-        var currentUrl = "/ExternalData/createColumns/";
+        $.each (columnNames, function(index, name) {
+            column = new Object();
+            column.ClassName = name;
+            column.ColumnActualPosition = -1;
+            column.ColumnId = -1;
+            column.ColumnNumber = -1;
+            column.CssProperties = "";
+            column.DisplayName = name;
+            column.DisplayType = "Project";
+            column.HasDetailRow = false;
+            column.HasDialog = false;
+            column.HasEditableTextarea = false;
+            column.HasPopover = false;
+            column.HasTooltip = false;
+            column.IsVisible = true;
+            column.Role = "me";
+            column.SelectorClass = "." + name;
 
-        var url = this.serviceAPI + currentUrl;
-
-        $.ajax({
-            url: this.serviceAPI + "./" + currentUrl,
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            datatype: "json",
-            data: JSON.stringify(columnNames),
-            async: true,                
-            success: function (columns) {
-                /* create a list of all of the columns for this view passed in from the server. Each row
-                    contains all the information needed for a cell to render itself. */
-                dashboardColumns = {};
-                $.each(columns, function (index, column) {
-                    dashboardColumns[column.ClassName] = column;
-                });
-                ProjectList.renderPage(data);
-            },
-            error: function (error) {
-                ProjectList.getProjectsError(error);
-            }
+            dashboardColumns[column.ClassName] = column;
+            
         })
+        ProjectList.renderPage(data);
+        //$.ajax({
+        //    url: this.serviceAPI + "./" + currentUrl,
+        //    type: "POST",
+        //    contentType: "application/json; charset=utf-8",
+        //    datatype: "json",
+        //    data: JSON.stringify(columnNames),
+        //    async: true,                
+        //    success: function (columns) {
+        //        /* create a list of all of the columns for this view passed in from the server. Each row
+        //            contains all the information needed for a cell to render itself. */
+        //        dashboardColumns = {};
+        //        $.each(columns, function (index, column) {
+        //            dashboardColumns[column.ClassName] = column;
+        //        });
+        //        ProjectList.renderPage(data);
+        //    },
+        //    error: function (error) {
+        //        ProjectList.getProjectsError(error);
+        //    }
+        //})
     },
     displayXmlFile: function(pathToXML) {
 

@@ -1,3 +1,36 @@
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\ApplicationInsights.config
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\csc.exe
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\vbc.exe
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\VBCSCompiler.exe
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\DataEngine.dll.config
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\DataEngine.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\DataEngine.pdb
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.Web.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.ApplicationInsights.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.Web.xml
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.ApplicationInsights.xml
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\obj\Debug\DataEngine.csprojResolveAssemblyReference.cache
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\obj\Debug\DataEngine.dll
+C:\Users\adria\Desktop\trash\DataEngine\DataEngine\obj\Debug\DataEngine.pdb
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\ApplicationInsights.config
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\roslyn\csc.exe
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -14,7 +47,6 @@ C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\r
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\DataEngine.dll.config
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\DataEngine.dll
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\DataEngine.pdb
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Antlr3.Runtime.dll
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -23,37 +55,12 @@ C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\M
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.AI.WindowsServer.dll
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.ApplicationInsights.dll
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Newtonsoft.Json.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Net.Http.Formatting.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Helpers.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Http.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Http.WebHost.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Mvc.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Optimization.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Razor.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.WebPages.Deployment.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.WebPages.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.WebPages.Razor.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\WebGrease.dll
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Antlr3.Runtime.pdb
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.AI.Web.xml
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.ApplicationInsights.xml
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Helpers.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Mvc.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Optimization.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Razor.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.WebPages.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.WebPages.Deployment.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.WebPages.Razor.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\Newtonsoft.Json.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Net.Http.Formatting.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Http.xml
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\System.Web.Http.WebHost.xml
+C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\obj\Debug\DataEngine.csprojResolveAssemblyReference.cache
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\obj\Debug\DataEngine.dll
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\obj\Debug\DataEngine.pdb
-C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\obj\Debug\DataEngine.csprojResolveAssemblyReference.cache

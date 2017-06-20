@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title> 
+    <title></title>
     <!--<link href="Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />-->
 
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -15,88 +15,90 @@
 </head>
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <nav class="navbar navbar-default" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://localhost:53055/index.html">Dashboard</a>
-        </div>
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:53055/index.html">Dashboard</a>
+            </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="http://localhost:56344/index.html">Home</a></li>
-           
-            </ul>
-        </div>
-    </nav>
-    <div id="main-panel">
-        <div id="SidePanel" class="side-panel">
-            <div id="ToggleLeftPane" class="float-right nav" style="cursor:pointer;width:10px" ata-toggle="tooltip" title="Click to hide/show panel">
-                <i class="fa fa-caret-square-o-left" aria-hidden="true" data-toggle="tooltip" title="Hide Filter Pallette"></i></div>
-            <label class="side-panel-header" style="cursor:pointer">Filter Pallette</label>
-            <nav id="NavSidePanelConfigBox" class="navbar navbar-defaultk side-panel-" role="navigation">
-                <div id="SidePanelConfigBox">
-                    <ul class="nav navbar-nav side-panel-">
-                        <li id="SelectFiltersToDisplay" class="side-panel-config-display"><i class="fa fa-cogs" aria-hidden="true" data-toggle="tooltip" title="Configure which filters are visible"></i></li>
-                    </ul>
-                    <ul class="nav navbar-nav side-panel-">
-                        <li id="ClearAllSidePanelFilters" class="side-panel-config-clear">
-                            <i class="fa fa-ban" aria-hidden="true" data-toggle="tooltip" title="Clear all filter selections"></i></li>
-                        <li id="CloseAllSidePanelFilters" class="side-panel-config-close"><i class="fa fa-minus" aria-hidden="true" data-toggle="tooltip" title="Close all filters"></i></li>
-                        <li id="OpenAllSidePanelFilters" class="side-panel-config-open"><i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Open all filters"></i></li>
-                    </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://localhost:56344/index.html">Home</a></li>
+
+                </ul>
+            </div>
+        </nav>
+        <div id="main-panel">
+            <div id="SidePanel" class="side-panel">
+                <div id="ToggleLeftPane" class="float-right nav" style="cursor:pointer;width:10px" ata-toggle="tooltip" title="Click to hide/show panel">
+                    <i class="fa fa-caret-square-o-left" aria-hidden="true" data-toggle="tooltip" title="Hide Filter Pallette"></i>
                 </div>
-            </nav>
-            <!--<ul class="nav navbar-nav side-panel-">
-                <li id="HideSidePanelConfig" class="side-panel-config-hide">Hide Config Panel</li>
-            </ul>-->
-            <div id="SideFilterDiv" class="side-panel-div"></div>
-        </div>
+                <label class="side-panel-header" style="cursor:pointer">Filter Pallette</label>
+                <nav id="NavSidePanelConfigBox" class="navbar navbar-defaultk side-panel-" role="navigation">
+                    <div id="SidePanelConfigBox">
+                        <ul class="nav navbar-nav side-panel-">
+                            <li id="SelectFiltersToDisplay" class="side-panel-config-display"><i class="fa fa-cogs" aria-hidden="true" data-toggle="tooltip" title="Configure which filters are visible"></i></li>
+                        </ul>
+                        <ul class="nav navbar-nav side-panel-">
+                            <li id="ClearAllSidePanelFilters" class="side-panel-config-clear">
+                                <i class="fa fa-ban" aria-hidden="true" data-toggle="tooltip" title="Clear all filter selections"></i>
+                            </li>
+                            <li id="CloseAllSidePanelFilters" class="side-panel-config-close"><i class="fa fa-minus" aria-hidden="true" data-toggle="tooltip" title="Close all filters"></i></li>
+                            <li id="OpenAllSidePanelFilters" class="side-panel-config-open"><i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Open all filters"></i></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!--<ul class="nav navbar-nav side-panel-">
+                    <li id="HideSidePanelConfig" class="side-panel-config-hide">Hide Config Panel</li>
+                </ul>-->
+                <div id="SideFilterDiv" class="side-panel-div"></div>
+            </div>
 
-        <div class="data-panel">
-            <div id="FilterDiv">
+            <div class="data-panel">
+                <div id="FilterDiv">
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Modal HTML -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Details for Predecessor xxx</h4>
-            </div>
-            <div class="modal-body">
-                <p>Details about predecessor tasks</p>
-                <p id="predecessorDetals" class="text-warning"><small>More Details ...</small></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Some button</button>
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Details for Predecessor xxx</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Details about predecessor tasks</p>
+                    <p id="predecessorDetals" class="text-warning"><small>More Details ...</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Some button</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
             integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
             crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-<script src="scripts/dashboard-models.js"></script>
-<script src="scripts/options.js"></script>
-<script src="scripts/dashboard.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+    <script src="scripts/dashboard-models.js"></script>
+    <script src="scripts/options.js"></script>
+    <script src="scripts/dashboard.js"></script>
 
-<script>
+    <script>
 
     $(document).ready(function() {
         $("#ToggleLeftPane").on("click", function (event) {
@@ -160,7 +162,7 @@
         //alert("This filter is not currently implemented");
     })
 
-    
+
 
     /* Use displayExternalData to load any data into the page. */
     //var columnNames = ["FirstName", "LastName"];
@@ -225,6 +227,6 @@
     //ProjectOptions.GetCriteria(ProjectList.serviceAPI, "ModPipeline/getSearchRingType", "#CriteriaThree", load);
     //ProjectOptions.GetCriteria(ProjectList.serviceAPI, "ModPipeline/getMarket", "#CriteriaFour", load);
     //ProjectOptions.GetCriteria(ProjectList.serviceAPI, "ModPipeline/getSubMarket", "#CriteriaFive", load);
-</script>
+    </script>
 </body>
 </html>
