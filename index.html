@@ -68,25 +68,6 @@
             </div>
         </div>
     </div>
-    <!-- Modal HTML -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Details for Predecessor xxx</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Details about predecessor tasks</p>
-                    <p id="predecessorDetals" class="text-warning"><small>More Details ...</small></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Some button</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"
             integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
@@ -118,51 +99,7 @@
     })
 
     // Load the data into the page
-    var url = 'http://localhost:56344/api/';
-
-    $("select.filterGroup").on("change", function (event) {
-
-        var filter = $(this).attr("id");
-        if (filter == "CriteriaOne") {
-            if ($(this).prop('selectedIndex') < 0) {
-                alert("You must choose at least one XXX");
-            }
-            else {
-                searchCriteria.CriteriaOne = $(this).val();
-                ProjectList.getProjectsUsingFilter(url, "ModPipeline", "getData", "POST", false);
-            }
-        }
-        else if (filter == "CriteriaTwo") {
-            if ($(this).prop('selectedIndex') < 0) {
-                alert("You must choose at least one Build Plan Year");
-            }
-            else {
-                searchCriteria.CriteriaTwo = $(this).val();
-                ProjectList.getProjectsUsingFilter(url, "ModPipeline", "getData", "POST", false);
-            }
-        }
-        else if (filter == "CriteriaThree") {
-            searchCriteria.CriteriaThree = $(this).val();
-            ProjectList.getProjectsUsingFilter(url, "ModPipeline", "getData", "POST", false);
-        }
-        else if (filter == "CriteriaFour") {
-            searchCriteria.CriteriaFour = $(this).val();
-            ProjectList.getProjectsUsingFilter(url, "ModPipeline", "getData", "POST", false);
-        }
-        else if (filter == "CriteriaFive") {
-            searchCriteria.CriteriaFive = $(this).val();
-            ProjectList.getProjectsUsingFilter(url, "ModPipeline", "getData", "POST", false);
-        }
-        else if (filter == "CustomProjectTypeFilter") {
-            searchCriteria.CustomProjectTypeList = $(this).val();
-            ProjectList.getProjectsUsingFilter(url, "ModPipeline", "getData", "POST", false);
-        }
-
-        //else
-        //alert("This filter is not currently implemented");
-    })
-
-
+    var url = "";//where to get the data from : 'http://localhost:56344/api/';
 
     /* Use displayExternalData to load any data into the page. */
     //var columnNames = ["FirstName", "LastName"];
@@ -185,48 +122,11 @@
         { "User Name": "Humde", "First Name": "Hellen", "Last Name": "Smee" }
     ]
 
-
-    //data[0] = { FirstName: "John", LastName: "Perez" };
-    //data[1] = { FirstName: "Philip", LastName: "Johnson" };
-    //data[2] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[3] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[4] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[5] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[6] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[7] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[8] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[9] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[10] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[11] = { FirstName: "Lance", LastName: "Weismen" };
-    //data[12] = { FirstName: "Lance", LastName: "Weismen" };
-
     ProjectList.displayExternalData(
         url,
         columnNames,
         data
     );
-
-    /* Three REST services to get data */
-    // 1.
-    //Get just one row, the one with primarykey 1 */
-    //ProjectList.getData(url, "ModPipeline", "getModPipeline/1", "GET", false);
-
-    // 2.
-    //Get all rows
-    //ProjectList.getData(url, "ModPipeline", "getModPipelines", "GET", false);
-
-    // 3.
-    //This is the default.  Get rows using the current criteria
-    //Default criteria for first pageload are set in dashboard.js
-    //ProjectList.getData(url, "ModPipeline", "getData", "POST", false);
-
-    //Use code like this if you want the search panel.
-    //var load = true;
-    //ProjectOptions.GetCriteria(ProjectList.serviceAPI, "ModPipeline/getStatus", "#CriteriaOne", load);
-    //ProjectOptions.GetCriteria(ProjectList.serviceAPI, "ModPipeline/getBuildPlanYear", "#CriteriaTwo", load);
-    //ProjectOptions.GetCriteria(ProjectList.serviceAPI, "ModPipeline/getSearchRingType", "#CriteriaThree", load);
-    //ProjectOptions.GetCriteria(ProjectList.serviceAPI, "ModPipeline/getMarket", "#CriteriaFour", load);
-    //ProjectOptions.GetCriteria(ProjectList.serviceAPI, "ModPipeline/getSubMarket", "#CriteriaFive", load);
     </script>
 </body>
 </html>
