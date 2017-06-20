@@ -38,10 +38,10 @@ var popoverTemplate = ['<div class="popover">',
 var controller = "SiterraProject";
 
 var DEFAULT_VIEW = 1;           /* Which comlumns to display */
-var DEFAULT_TEMPLATE = "Candidate Analysis";   /* Which Siterra Template to determine which projects to display */
-var DEFAULT_CRITERIA_ONE = ["Active"];     /* Which status (Active, Complete ...) to display. */
-var DEFAULT_CRITERIA_TWO = ["2016"];
-var DEFAULT_CRITERIA_FOUR = ["South Central"];
+var DEFAULT_TEMPLATE = "Main View";
+var DEFAULT_CRITERIA_ONE = ["Something"];     /* Which status (Active, Complete ...) to display. */
+var DEFAULT_CRITERIA_TWO = ["Something2"];
+var DEFAULT_CRITERIA_FOUR = ["Something3"];
 var CUSTOM_PROJECT_TYPE = [""];
 /* if none are specified on page load, default values are used to determine how the UI is rendered. */
 var searchCriteria = new pmDashboardModels.SearchCriteria(DEFAULT_VIEW, DEFAULT_TEMPLATE, DEFAULT_CRITERIA_ONE, DEFAULT_CRITERIA_TWO, DEFAULT_CRITERIA_FOUR, CUSTOM_PROJECT_TYPE);
