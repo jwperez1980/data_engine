@@ -43,11 +43,11 @@ var ProjectList = {
     /* 
     * Pass in an array of column names and get back an array of column objects. Then call renderPage.
     */
-    displayExternalData: function (columnNames, data) {
+    displayExternalData: function (columnOrder, data) {
 
         dashboardColumns = {};
 
-        $.each (columnNames, function(index, name) {
+        $.each (columnOrder, function(index, name) {
             column = new Object();
             column.ClassName = name;
             column.ColumnActualPosition = -1;
