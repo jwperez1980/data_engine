@@ -193,7 +193,7 @@ var ProjectList = {
                 /* this is a hack to stop a datatables error from occuring */
                 bAutoWidth: false,
                 /* This setups up the tables config buttons/links (like filters, pagination etc ... */
-                dom: '<"float-left input-sm"i><"float-left input-sm"l><"input-sm global-search"f>rtp',
+                dom: '<"float-left input-sm"i><"float-left input-sm"l><"float-right input-sm global-search"f>rtp',
                 //dom: "<'row'<'col-sm-6 bottom-space'B>>" +
                 //    '<"fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-tl ui-corner-tr"lfr>' +
                 //        't' +  '<"fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-bl ui-corner-br"ip>',
@@ -375,7 +375,7 @@ var ProjectList = {
                     function (event) {
                         if ($(this).text() == "Hide") {
                             $("#" + currId).hide();
-                            $(this).text("Show Search Box");
+                            $(this).text("Show");
                         }
                         else {
                             $("#" + currId).show();
