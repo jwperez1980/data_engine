@@ -1,0 +1,286 @@
+﻿.container {
+    /*margin-left: 20px;*/  
+}
+
+.navbar {
+    margin-left: 0px;
+    padding: 0 0 0 0;
+}
+
+/* this allows the row count display to center horizontally */
+.dataTables_wrapper .dataTables_info {
+    padding-top: 0px;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    float: none;
+    text-align: left;
+}
+
+/* special css for the column filters navbar */
+#SidePanel .navbar {
+    min-height: 20px;
+    margin-bottom: 1px;
+}
+
+.dataTables_info, .dataTables_length label {
+    font-weight: 100;
+}
+
+.global-search {
+    font-weight: 700;
+}
+
+#main-panel {
+    min-width: 3000px;
+}
+
+.side-panel {
+    float: left;
+    clear: left;
+    min-width: 5px; 
+    max-width: 200px;
+    min-height: 400px;
+    background-color: lightgray;
+    padding: 7px 7px 7px 7px;
+    width: 250px;
+}
+
+.data-panel {
+    float: left;
+    min-width: 300px;
+    margin-left: 10px;
+}
+
+li[class*="side-p.tanel-config-"] {
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: x-small;
+    color: blue;
+}
+
+.spacer {
+    font-size: x-small;
+    font-weight: 900;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#FilterDiv  {
+/*    border-radius:5px;
+  border: 1px solid #c0c0c0;
+  padding: 0.35em 0.625em 0.75em; */
+}
+
+#SideFilterDiv 
+ {
+    width: 100%;
+}
+
+div.side-panel-div select {
+    padding: 1px;
+}
+
+div.side-panel-div select option {
+    padding: 2px;
+}
+
+.side-panel-filter-header {
+    font-size: 12px;
+}
+
+input[type="search"], input[type="text"], div.rounded-corners, select, dataTables_wrapper {
+  border-radius:5px;
+  border: 1px solid #c0c0c0;
+  padding: 0.35em 0.625em 0.75em;
+  font-weight: normal;
+  font-size: 10px;
+  height: 23px;
+}
+
+.side-panel {
+  border-radius:5px;
+  /*border: 1px solid #c0c0c0;
+  padding: 0.35em 0.625em 0.75em;*/
+
+}
+
+.float-right {
+    float: right;
+    /*margin: 0;*/
+}
+
+.float-left {
+    float: left;
+    /*margin: 0;*/
+}
+
+a.no-float {
+    float: left;
+}
+
+button.display-btn {
+  font-weight: normal;
+  font-size: 10px;       
+}
+
+.fa {
+    padding-right: 10px;
+}
+
+/*div.modal-dialog div.container, .modal-dialog {
+    max-width: 200px;
+}*/
+
+
+/*.clear {
+    clear: both;
+}
+
+.btn-filter {
+    border: 0 ;
+max-width: 50px;
+display:inline;
+}
+ 
+.btn-filter:focus, .btn-filter:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+ 
+.btn-filter {
+    background: #0099cc;
+    color: #ffffff;
+}
+ 
+.btn-filter:hover, .btn-filter:focus, .btn-filter:active, .btn-filter.active, .open > .dropdown-toggle.btn-filter {
+    background: #33a6cc;
+}
+ 
+.btn-filter:active, .btn-filter.active {
+    background: #007299;
+
+    box-shadow: none;
+}
+
+        .pull-up {
+            margin-top: -20px;
+        }
+
+        .popover-title {
+            min-width: 200px;
+            word-wrap: break-word;
+        }
+
+        .metadata-div {
+            width: 300px;
+        }
+
+        .page-header-pad {
+            padding-top: -0px;
+        }
+
+       .page-header {
+            padding-top: -40px;
+        }
+
+        .navbar > li {
+            font-size: small;
+        } 
+
+       .glyphicon-size {
+            font-size: 30px;
+        }
+
+        .bottom-space {
+            padding-bottom: 15px;
+        }
+
+        .right-space {
+            padding-right: 5px;
+        }
+
+        .left-space {
+            padding-left: 5px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        div.filterMenu li {
+            height: 90px;
+            padding: 4px 7px 2px 4px;
+        }*/
+
+        /*** Give tables rounded corners */
+        /*table {
+            *border-collapse: collapse;*/  /* IE7 and lower */
+            /*border-spacing: 0;
+            font: normal 10px arial, Tahoma;
+        }
+
+        table tr td .notes {
+            max-width: 100%;
+            white-space: nowrap;
+        }
+
+        th:first-child {
+            border-radius: 6px 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 6px 0 0;
+        }
+
+        th:only-child {
+            border-radius: 6px 6px 0 0;
+        }*/
+        /*** End round corners*/
+
+
+        /*
+
+        @media screen and (min-width: 768px) {
+            .modal:before {
+                display: inline-block;
+                vertical-align: middle;
+                content: " ";
+                height: 100%;
+            }
+        }
+
+        .modal-dialog {
+            display: inline-block;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .is-complete {
+            background-color: lightgreen;
+        }
+
+        .is-overdue {
+            background-color: red;
+        }
+
+        a.green {
+            color: green;
+        }
+
+        red, a.red {
+            color: red;
+        }
+
+        
+        td.highlight {
+            background-color: whitesmoke !important;
+        }
+
+        tr.highlight {
+            background-color: whitesmoke !important;
+        }
+
+        th > input {
+            width: 50px;
+        }*/
+
