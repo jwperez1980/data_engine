@@ -119,28 +119,26 @@
     var url = "";//where to get the data from : 'http://localhost:56344/api/';
 
     /* Use displayExternalData to load any data into the page. */
-    //var columnNames = ["FirstName", "LastName"];
-    //var columnNames = ["aaaa", "bbbb", "cccc", "dddd", "eeee", "ffff", "gggg", "hhhh", "iiii", "jjjj", "kkkk"];
-    //var data = new Object();
+    var columnNames = ["aaaa", "bbbb", "cccc", "dddd", "eeee", "ffff", "gggg", "hhhh", "iiii", "jjjj", "kkkk"];
+    var data = new Object();
 
-    //for (var i = 0; i < 10000; i++) {
-    //    data[i] = { aaaa: Math.round(Math.random() * 100), bbbb: Math.round(Math.random() * 100), cccc: Math.round(Math.random() * 100), dddd: Math.round(Math.random() * 100), eeee: Math.round(Math.random() * 100), ffff: Math.round(Math.random() * 100), gggg: Math.round(Math.random() * 100), hhhh: Math.round(Math.random() * 100), iiii: Math.round(Math.random() * 100), jjjj: Math.round(Math.random() * 100), kkkk: Math.round(Math.random() * 100) }
-    //}
+    for (var i = 0; i < 10000; i++) {
+        data[i] = { aaaa: Math.round(Math.random() * 100), bbbb: Math.round(Math.random() * 100), cccc: Math.round(Math.random() * 100), dddd: Math.round(Math.random() * 100), eeee: Math.round(Math.random() * 100), ffff: Math.round(Math.random() * 100), gggg: Math.round(Math.random() * 100), hhhh: Math.round(Math.random() * 100), iiii: Math.round(Math.random() * 100), jjjj: Math.round(Math.random() * 100), kkkk: Math.round(Math.random() * 100) }
+    }
 
-    var columnNames = ["User Name", "First Name", "Last Name"];
-    data = [
-        {"User Name": "Sammy", "First Name": "Sam", "Last Name": "Green"},
-        { "User Name": "Sylvia", "First Name": "Natasha", "Last Name": "Galloway" },
-        { "User Name": "Jilly", "First Name": "Jilliam", "Last Name": "McKoy" },
-        { "User Name": "Moonstruck", "First Name": "Paul", "Last Name": "Liermach" },
-        { "User Name": "Eddee", "First Name": "Edward", "Last Name": "Sloop" },
-        { "User Name": "Stvpy", "First Name": "Steve", "Last Name": "Puvy" },
-        { "User Name": "Yelp", "First Name": "June", "Last Name": "Tyler" },
-        { "User Name": "Humde", "First Name": "Hellen", "Last Name": "Smee" }
-    ]
+    //var columnNames = ["User Name", "First Name", "Last Name"];
+    //data = [
+    //    {"User Name": "Sammy", "First Name": "Sam", "Last Name": "Green"},
+    //    { "User Name": "Sylvia", "First Name": "Natasha", "Last Name": "Galloway" },
+    //    { "User Name": "Jilly", "First Name": "Jilliam", "Last Name": "McKoy" },
+    //    { "User Name": "Moonstruck", "First Name": "Paul", "Last Name": "Liermach" },
+    //    { "User Name": "Eddee", "First Name": "Edward", "Last Name": "Sloop" },
+    //    { "User Name": "Stvpy", "First Name": "Steve", "Last Name": "Puvy" },
+    //    { "User Name": "Yelp", "First Name": "June", "Last Name": "Tyler" },
+    //    { "User Name": "Humde", "First Name": "Hellen", "Last Name": "Smee" }
+    //]
 
     ProjectList.displayExternalData(
-        url,
         columnNames,
         data
     );

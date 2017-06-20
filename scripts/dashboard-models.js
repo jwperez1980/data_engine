@@ -1,7 +1,7 @@
 ﻿
 var pmDashboardModels = {
-    Metadata: function (SiterraId, ProjectNumber, JSDataObject, RowNum) {
-        this.SiterraProjectId = SiterraId; /* Note that this is populated from the client */
+    Metadata: function (pId, ProjectNumber, JSDataObject, RowNum) {
+        this.projectId = pId; /* Note that this is populated from the client */
         this.ProjectNumber = ProjectNumber;
         this.Data = JSDataObject; /* Must be an instance of the Data object below */
         this.RowNum = RowNum;/*This is the row in the html table*/
@@ -16,7 +16,6 @@ var pmDashboardModels = {
 
         /* Optional */
         this.Type = Type;           /* Textarea, Dropdown, Textbox ect... */
-        this.IsMilestone = IsMilestone;
         this.Order = Order;         /* If there is more than one metatdata value attached to this class, the order to display them. */
         this.MetadataId = MetadataId;    /* Foriegn Key */
     },

@@ -11,7 +11,6 @@ window.onload = function () {
 /* dashboardColumns: This is te list of columns to display and properties describing how to display */
 var dashboardColumns = {}
 var dTable;
-var TASK_DUE_GRACE_PERIOD = 4;
 
 var cached = {};
 var cachedResponseIndex = 0;
@@ -25,18 +24,8 @@ var glyphAdd = "glyphicon glyphicon-plus";
 var glyphSave = "glyphicon glyphicon-floppy-save";
 var spanFilters = "<span class=\"left-space\">Filters</span>";
 var glyphTrash = "glyphicon glyphicon-trash";
-var editNotes = "Edit Notes";
-var save = "Save";
-var addNote = "Add Note";
 
-var popoverTemplate = ['<div class="popover">',
-'<div class="arrow"></div>',
-'<table width="100%"><tr><th class="popover-title"></th></tr></table>',
-'<table class="popover-content"></table>',
-'</div>'].join('');
-
-var controller = "ControllerName";
-
+/* This is here for use later when loading of filter criteria from external source is implemented */
 var DEFAULT_VIEW = 1;           /* Which comlumns to display */
 var DEFAULT_TEMPLATE = "Main View";
 var DEFAULT_CRITERIA_ONE = ["Something"];     /* Which status (Active, Complete ...) to display. */
@@ -45,20 +34,16 @@ var DEFAULT_CRITERIA_FOUR = ["Something3"];
 var CUSTOM_PROJECT_TYPE = [""];
 /* if none are specified on page load, default values are used to determine how the UI is rendered. */
 var searchCriteria = new pmDashboardModels.SearchCriteria(DEFAULT_VIEW, DEFAULT_TEMPLATE, DEFAULT_CRITERIA_ONE, DEFAULT_CRITERIA_TWO, DEFAULT_CRITERIA_FOUR, CUSTOM_PROJECT_TYPE);
+/* ****** */
 
 var viewName = "";
 
-var saved_siterra_table = "";
-
 var ProjectList = {
-
-    serviceAPI: "",
-    appHome: 'ProjectContent.aspx',
 
     /* 
     * Pass in an array of column names and get back an array of column objects. Then call renderPage.
     */
-    displayExternalData: function (serviceAPI, columnNames, data) {
+    displayExternalData: function (columnNames, data) {
 
         dashboardColumns = {};
 
@@ -93,7 +78,7 @@ var ProjectList = {
         try {
 
             /* create the table to load DataTable data into */
-            var siterraTable = $("<table></table>", { id: "siterraProjects", class: "display table table-striped table-bordered table-condensed" })
+            var currentDataTable = $("<table></table>", { id: "dataDataID", class: "display table table-striped table-bordered table-condensed" })
             var thead = $("<thead></thead>", { id: "mainHeaderRow" });
             var tbody = $("<tbody></tbody>", { id: "bodyRow" });
             var trNoRecord = $("<tr></tr>", { id: "noRecordsRow" });
@@ -102,8 +87,6 @@ var ProjectList = {
 
             trNoRecord.append(tdNoRecord);
             tbody.append(trNoRecord);
-
-            saved_siterra_table = siterraTable.clone();
 
             var displayColumns = [];
             var counter = 0;
@@ -145,12 +128,12 @@ var ProjectList = {
             thead.append(headTr);
             tbody.append(bodyTr);
             tfoot.append(footTr);
-            siterraTable.append(thead, tbody, tfoot);
+            currentDataTable.append(thead, tbody, tfoot);
 
             $("#page-header").remove()
 
             $("#FilterDiv").after($pageHeaderDiv);
-            $("#page-header").after(siterraTable);
+            $("#page-header").after(currentDataTable);
 
             /* create displayData which are all the values to be displayed in a cell of the DataTable object.
              * The format will be : [{name: value},{name: value}...] where name maps to a displayColumns */
@@ -177,7 +160,7 @@ var ProjectList = {
             var currR = 1;
             $.fn.dataTable.ext.errMode = 'none';
 
-            dTable = $('#siterraProjects').DataTable({
+            dTable = $('#dataDataID').DataTable({
                 pageLength: 100,
                 deferRender: true,
                 /* This sets the label for glabal search box */
@@ -197,78 +180,17 @@ var ProjectList = {
                 //dom: "<'row'<'col-sm-6 bottom-space'B>>" +
                 //    '<"fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-tl ui-corner-tr"lfr>' +
                 //        't' +  '<"fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-bl ui-corner-br"ip>',
-                buttons: [
-                    'copy',
-                    'excel',
-                    'csv',
-                    'pdf',
-                    'print'
-                ],
+                //buttons: [
+                //    'copy',
+                //    'excel',
+                //    'csv',
+                //    'pdf',
+                //    'print'
+                //],
 
                 fnInitComplete: function () {
                     /* this is the datatable object itself */
                     that = this;
-
-                    /* When the notes add/save icon is clicked ... */
-                    $("a[class='metadataAdd']").on("click", function (event) {
-                        var iTag = $(this).find("i");
-                        var c = iTag.attr("class");
-                        if (c == glyphAdd) {
-                            iTag.attr("class", glyphSave);
-                            $(this).parent().find(".metadataEdit").hide();
-                            $(this).find("span").html(save);
-                        }
-                        else if (iTag.attr("class") == glyphSave) {
-                            iTag.attr("class", glyphAdd);
-                            $(this).parent().find(".metadataEdit").show();
-                            var targetDiv = "Metadata-" + $(this).attr("data-class-name") + "-" + $(this).attr("data-row-num");
-
-                            var dataTableNodes = that.fnGetNodes();
-                            var metadataDiv = $("#" + targetDiv, dataTableNodes);
-                            var dataId = metadataDiv.attr("data-data-id");
-
-                            var className = $(this).attr("data-class-name");  //Attach_To
-                            var rowNum = $(this).attr("data-row-num");
-                            var name = $(this).attr("data-display-name");
-                            var projectNum = $(this).attr("data-project-number");
-                            var textAreaValue = $(this).parent().find(".form-control").val();
-                            $(this).parent().find(".form-control").val("");
-                            $(this).find("span").html(addNote);
-
-                            ProjectList.postMetadata(dataId, className, rowNum, name, textAreaValue, projectNum, searchCriteria.Temlate), false;
-                        }
-                    });
-
-                    $("a[class='metadataEdit']").on("click", function (event) {
-                        var iTag = $(this).find("i");
-                        var c = iTag.attr("class");
-                        if (c == glyphEdit) {
-                            iTag.attr("class", glyphSave);
-                            var metadataDivNotes = ".Metatdata-" + $(this).attr("data-class-name") + "-" + $(this).attr("data-row-num");
-                            $(this).parent().find(".form-control").val($(this).parent().find(".metadata-div")[0].innerText);
-                            $(this).parent().find(".metadataAdd").hide();
-                            $(this).find("span").html(save);
-                        }
-                        else if (iTag.attr("class") == glyphSave) {
-                            iTag.attr("class", glyphEdit);
-                            $(this).parent().find(".metadataAdd").show();
-                            var targetDiv = "Metadata-" + $(this).attr("data-class-name") + "-" + $(this).attr("data-row-num");
-
-                            var dataTableNodes = that.fnGetNodes();
-                            var metadataDiv = $("#" + targetDiv, dataTableNodes);
-                            var dataId = metadataDiv.attr("data-data-id");
-
-                            var className = $(this).attr("data-class-name");  //Attach_To
-                            var rowNum = $(this).attr("data-row-num");
-                            var name = $(this).attr("data-display-name");
-                            var projectNum = $(this).attr("data-project-number");
-                            var textAreaValue = $(this).parent().find(".form-control").val().replace(new RegExp('\r?\n', 'g'), '<br />');
-                            $(this).parent().find(".form-control").val("");
-                            $(this).find("span").html(editNotes);
-
-                            ProjectList.postMetadata(dataId, className, rowNum, name, textAreaValue, projectNum, true);
-                        }
-                    });
                 }, fnDrawCallback: function (oSettings) { }
                 , footerCallback: function (tfoot, data, start, end, display) { }
                 , headerCallback: function (thead, data, start, end, display) { }
@@ -296,7 +218,7 @@ var ProjectList = {
             }); /* end DataTable */
            
             /* Create select box for each column */
-            api = $('#siterraProjects').DataTable()
+            api = $('#dataDataID').DataTable()
             api.columns().flatten().each(function (colIdx) {
                 // Create the select list and search operation
                 var selected = "";
@@ -396,7 +318,7 @@ var ProjectList = {
      */
     setColumnValues: function (row, columnNumber, columnToAdd, milestone, item, isMilestone) {
         try {
-            var table = $('#siterraProjects');
+            var table = $('#dataDataID');
 
             $(columnToAdd.SelectorClass, row).attr("cell-" + row.getAttribute("data-row-num") + "-" + columnNumber);
 
@@ -428,32 +350,6 @@ var ProjectList = {
             alert('Something went wrong in setColumnValues!\n' + ex);
         }
 
-    },
-    /***
-     * Call http method and send the JSON to the controller at path.
-     */
-    callHttpMethod: function (path, httpMethod, jsonData, successMethod, errorMethod) {
-        try {                
-            $.ajax({  
-                url: this.serviceAPI + path,
-                type: httpMethod,
-                contentType: "application/json; charset=utf-8",
-                datatype: "json",
-                data: jsonData,
-                async: true,
-                success: function (response) {
-                    if(successMethod !== null && successMethod != 'Undefined')
-                        successMethod.onSuccess();
-                },
-                error: function (error) {
-                    if(errorMethod != null && errorMethod != 'Undefined')
-                        errorMethod.onError();
-                    alert("Error calling service: " + path + " using method: " + httpMethod);
-                },
-            });
-        } catch (error) {
-            alert("Error in callHttpMethod");
-        }
     },
     clearAllColumnSelects: function (selector, defaultValue) {
         var selector = $(selector); //.multiselect("uncheckAll");
