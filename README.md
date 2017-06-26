@@ -5,6 +5,7 @@ This extension was created to demostrate how to create a single page app in Java
 
 Lists of data sourcs can be created and passed to the extension dynamically.  For example:
 
+<<<<<<< 205d635c87681dd7f04df87b575a5923ac644f0d
   <select>
       <option value="https://swapi.co/api/people/?format=json">REST Service</option>
       <option value="<some path to JSON on server/theFile.json">File from Server</option>
@@ -15,6 +16,18 @@ Lists of data sourcs can be created and passed to the extension dynamically.  Fo
 - The list could be manipulated in the JS by the user, to add new URLs as needed.#
 - There could be a text box where a user enters a URL.
 - Base on user input and other variables a URL can be created dynamically and passed staight to the extension constructor.
+=======
+<select>
+  <option value="https://swapi.co/api/people/?format=json">REST Service</option>
+  <option value="<some path to JSON on server/theFile.json">File from Server</option>
+  <option value="<JS array you create on the fly/dynamicFile">JA Object</option>
+</select>
+
+# The list could be created dynamically from a DB table so that adding a row to the table creates a new option in the list.
+# The list could be manipulated in the JS by the user, to add new URLs as needed.#
+# There could be a text box where a user enters a URL.
+# Base on user input and other variables a URL can be created dynamically and passed staight to the extension constructor.
+>>>>>>> Update the readme file
 
 For working example deployed on Heroku:
 
@@ -114,4 +127,8 @@ If the data to display is not in the root of the json hierarchy, the path to it 
 	]
 }
 
+<<<<<<< 205d635c87681dd7f04df87b575a5923ac644f0d
 ```
+=======
+```
+>>>>>>> Update the readme file
