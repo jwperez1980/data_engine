@@ -28,12 +28,10 @@ The following is an example:
 
 HTML (only this one line is requred):
 
-
   <div class="data-panel">
       <div id="FilterDiv">
       </div>
   </div>
-
 
 INCLUDES:
 ```html
