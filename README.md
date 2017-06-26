@@ -28,10 +28,11 @@ The following is an example:
 
 HTML (only this one line is requred):
 
-  <div class="data-panel">
-      <div id="FilterDiv">
-      </div>
-  </div>
+```html
+<div class="data-panel">
+	<div id="FilterDiv"></div>
+</div>
+```
 
 INCLUDES:
 ```html
@@ -56,6 +57,7 @@ ProjectList.callHttpMethod("https://swapi.co/api/people/?format=json", "GET", nu
 ```
 
 All that is required is that the JSON be formated correctly such as follows:
+```json
 [
 	{
 		"id":1,
@@ -79,8 +81,9 @@ All that is required is that the JSON be formated correctly such as follows:
 	},
 	...
 ]
+```
 
-If the data to display is not in the root of the file, the path to it can be used.  In the following the "results" path would be used.  The rest of the file is ignored.
+If the data to display is not in the root of the json hierarchy, the path to it can be used.  In the following the "results" path would be used.  The rest of the file is ignored.
 ```json
 {
 	"count":87,
