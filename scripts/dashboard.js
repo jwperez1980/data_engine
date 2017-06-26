@@ -1,9 +1,4 @@
-﻿/*****
-* dashboardColumns is an array of Project objects that describe the columns parametersObject
-* to display on a web page. Project is defined in the dashboard-models.js file.search
-****/
-
-window.onload = function () {
+﻿window.onload = function () {
     var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart; 
     console.log('Page load time is ' + loadTime);
 }
@@ -11,27 +6,11 @@ window.onload = function () {
 /* dashboardColumns: This is te list of columns to display and properties describing how to display */
 var dashboardColumns = {}
 var dTable;
-
-var cached = {};
-var cachedResponseIndex = 0;
-var cachedMilestonesQuickReference = []; /* map the Header to the index in the array for quick access */
-
-var GlobalCounter = 0;
-var glyphDown = "<i class=\"glyphicon glyphicon-chevron-down\"></i>";
-var glyphUp = "<i class=\"glyphicon glyphicon-chevron-up\"></i>";
-var glyphEdit = "glyphicon glyphicon-pencil";
-var glyphAdd = "glyphicon glyphicon-plus";
-var glyphSave = "glyphicon glyphicon-floppy-save";
-var spanFilters = "<span class=\"left-space\">Filters</span>";
-var glyphTrash = "glyphicon glyphicon-trash";
-
 var viewName = "";
 
 var ProjectList = {
 
-    /* 
-    * Pass in an array of column names and get back an array of column objects. Then call renderPage.
-    */
+    /* column order is optional */
     displayExternalData: function (columnOrder, data, url) {
 
         dashboardColumns = {};
@@ -45,24 +24,10 @@ var ProjectList = {
             })
         }
 
+
         $.each (columnOrder, function(index, name) {
             column = new Object();
             column.ClassName = name;
-            column.ColumnActualPosition = -1;
-            column.ColumnId = -1;
-            column.ColumnNumber = -1;
-            column.CssProperties = "";
-            column.DisplayName = name;
-            column.DisplayType = "Project";
-            column.HasDetailRow = false;
-            column.HasDialog = false;
-            column.HasEditableTextarea = true;
-            column.HasPopover = false;
-            column.HasTooltip = false;
-            column.IsVisible = true;
-            column.Role = "me";
-            column.SelectorClass = "." + name;
-
             dashboardColumns[column.ClassName] = column;
             
         })
@@ -190,14 +155,6 @@ var ProjectList = {
             /* create displayData which are all the values to be displayed in a cell of the DataTable object.
              * The format will be : [{name: value},{name: value}...] where name maps to a displayColumns */
             var displayData = [];
-            /**** 
-             * Loop and and put the milestones in an array for easy access later.
-             * Cache this (scoped variable) to use later.  Done here so it does not have
-             * to be done for each row of the data table.
-             * Access:
-             *    cachedMilestonesQuickReference[index][<milestone headername>] = a set of milestones 
-             * This loop also adds data to the displayData object.
-            ****/
             $.each(response, function (index, project) {
 
                 /***
@@ -501,30 +458,6 @@ $(document).ready(function () {
         });
         $('#myModal').modal('hide');
     })
-
-    $("select").on('focus.bs.select', function () {
-        //alert('focus')
-    })
-
-    //$("#HideSidePanelConfig").on('click', function (event) {
-    //    if( $("#HideSidePanelConfig").text() )
-    //})
-
-    //$("#FilterDiv").on("hide.bs.collapse", function () {
-    //    $("#revealElement").html(glyphDown + spanFilters);
-    //    $("#page-header").attr("class","page-header");
-
-    //});
-
-    //$("#FilterDiv").on("show.bs.collapse", function () {
-    //    $("#revealElement").html(glyphUp + spanFilters);
-    //    $("#page-header").attr("class", "page-header-pad");
-    //});
-    
-    //$("select.demo2").change( function () {
-    //    searchCriteria.CustomProjectTypeList = $(this).val();
-    //    ProjectList.getProjectsUsingFilter();
-    //})
 
     jQuery(function ($) {
         $(document).ajaxStop(function () {
