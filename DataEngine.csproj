@@ -112,6 +112,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="report.html" />
     <Content Include="scripts\dashboard-models.js" />
     <Content Include="scripts\dashboard.js" />
     <Content Include="scripts\design-views.js" />

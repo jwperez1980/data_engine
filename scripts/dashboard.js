@@ -25,17 +25,6 @@ var glyphSave = "glyphicon glyphicon-floppy-save";
 var spanFilters = "<span class=\"left-space\">Filters</span>";
 var glyphTrash = "glyphicon glyphicon-trash";
 
-/* This is here for use later when loading of filter criteria from external source is implemented */
-var DEFAULT_VIEW = 1;           /* Which comlumns to display */
-var DEFAULT_TEMPLATE = "Main View";
-var DEFAULT_CRITERIA_ONE = ["Something"];     /* Which status (Active, Complete ...) to display. */
-var DEFAULT_CRITERIA_TWO = ["Something2"];
-var DEFAULT_CRITERIA_FOUR = ["Something3"];
-var CUSTOM_PROJECT_TYPE = [""];
-/* if none are specified on page load, default values are used to determine how the UI is rendered. */
-var searchCriteria = new pmDashboardModels.SearchCriteria(DEFAULT_VIEW, DEFAULT_TEMPLATE, DEFAULT_CRITERIA_ONE, DEFAULT_CRITERIA_TWO, DEFAULT_CRITERIA_FOUR, CUSTOM_PROJECT_TYPE);
-/* ****** */
-
 var viewName = "";
 
 var ProjectList = {
@@ -43,9 +32,18 @@ var ProjectList = {
     /* 
     * Pass in an array of column names and get back an array of column objects. Then call renderPage.
     */
-    displayExternalData: function (columnOrder, data) {
+    displayExternalData: function (columnOrder, data, url) {
 
         dashboardColumns = {};
+
+        if (columnOrder == null) {
+            var counter = 0;
+            columnOrder = [];
+            $.each(data[0], function (columnName, columnValue) {
+                if (counter < 8)
+                    columnOrder[counter++] = columnName;
+            })
+        }
 
         $.each (columnOrder, function(index, name) {
             column = new Object();
@@ -76,6 +74,57 @@ var ProjectList = {
         */
         var x = response;
         try {
+
+            var main_panel = 
+            "<div id=\"main-panel\">" +
+            "    <div id=\"SidePanel\" class=\"side-panel\">" +
+            "        <div id=\"ToggleLeftPane\" class=\"float-right nav\" style=\"cursor:pointer;width:10px\" ata-toggle=\"tooltip\" title=\"Click to hide/show panel\">" +
+            "            <i class=\"fa fa-caret-square-o-left\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Hide Filter Pallette\"></i>" +
+            "        </div>" +
+            "        <label class=\"side-panel-header\" style=\"cursor:pointer\">Filter Pallette</label>" +
+            "        <nav id=\"NavSidePanelConfigBox\" class=\"navbar navbar-defaultk side-panel-\" role=\"navigation\">" +
+            "            <div id=\"SidePanelConfigBox\">" +
+            "                <ul class=\"nav navbar-nav side-panel-\">" +
+            "                    <li id=\"SelectFiltersToDisplay\" class=\"side-panel-config-display\"><i class=\"fa fa-cogs\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Configure which filters are visible\"></i></li>" +
+            "                </ul>" +
+            "                <ul class=\"nav navbar-nav side-panel-\">" +
+            "                    <li id=\"ClearAllSidePanelFilters\" class=\"side-panel-config-clear\">" +
+            "                        <i class=\"fa fa-ban\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Clear all filter selections\"></i>" +
+            "                    </li>" +
+            "                    <li id=\"CloseAllSidePanelFilters\" class=\"side-panel-config-close\"><i class=\"fa fa-minus\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Close all filters\"></i></li>" +
+            "                    <li id=\"OpenAllSidePanelFilters\" class=\"side-panel-config-open\"><i class=\"fa fa-plus\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Open all filters\"></i></li>" +
+            "                </ul>" +
+            "            </div>" +
+            "        </nav>" +
+            "        <!--<ul class=\"nav navbar-nav side-panel-\">" +
+            "            <li id=\"HideSidePanelConfig\" class=\"side-panel-config-hide\">Hide Config Panel</li>" +
+            "        </ul>-->" +
+            "        <div id=\"SideFilterDiv\" class=\"side-panel-div\"></div>" +
+            "    </div>" +
+
+            "    <div class=\"data-panel\">" +
+            "        <div id=\"FilterDiv\">" +
+            "        </div>" +
+            "    </div>" +
+            "</div>" +
+            "</div>";
+
+            var my_model = 
+            "<div id=\"myModal\" class=\"modal fade\" role=\"dialog\">" +
+            "    <div class=\"modal-dialog\">" +
+            "        <div class=\"modal-content\">" +
+            "            <div class=\"modal-header\">" +
+            "            </div>" +
+            "            <div class=\"modal-body\">" +
+            "            </div>" +
+            "            <div class=\"modal-footer\">" +
+            "                <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>" +
+            "                <button type=\"button\" class=\"btn btn-primary\">Some button</button>" +
+            "            </div>" +
+            "        </div>" +
+            "    </div>" +
+            "</div>";
+
 
             /* create the table to load DataTable data into */
             var currentDataTable = $("<table></table>", { id: "dataDataID", class: "display table table-striped table-bordered table-condensed" })
@@ -120,9 +169,9 @@ var ProjectList = {
             /* create the header that names the view being displayed */
             $pageHeaderDiv = $("<div></div>", { id: "page-header", class: "page-header-pad"});
             $ph_h3 = $("<label></label>", { id: "tableHeader", class: "lead", text: "View - " + viewName + " " });
-            $ph_h3_span = $("<span></span>", { id: "CurrentTemplate", class: "small", text: "(" + searchCriteria.Template + ")" });
+            //$ph_h3_span = $("<span></span>", { id: "CurrentTemplate", class: "small", text: "(" + viewName + ")" });
 
-            $ph_h3.append($ph_h3_span);
+            //$ph_h3.append($ph_h3_span);
             $pageHeaderDiv.append($ph_h3);
             
             thead.append(headTr);
@@ -132,8 +181,11 @@ var ProjectList = {
 
             $("#page-header").remove()
 
+            $("#FilterDiv").before(main_panel)
             $("#FilterDiv").after($pageHeaderDiv);
             $("#page-header").after(currentDataTable);
+
+            $("#page-header").after(my_model);
 
             /* create displayData which are all the values to be displayed in a cell of the DataTable object.
              * The format will be : [{name: value},{name: value}...] where name maps to a displayColumns */
@@ -197,7 +249,7 @@ var ProjectList = {
                 , rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) { }
                 , data: displayData
                 , columns: displayColumns
-                , columnDefs: [{ "width": "500px", "targets": "ProjectName" }]
+                //, columnDefs: [{ "width": "500px", "targets": "ProjectName" }]
                 , createdRow: function (row, item, index) { //row, cellsInCurrentRow, rowIndex
 
                     var currC = 1;
@@ -208,10 +260,10 @@ var ProjectList = {
                     * The column cells for each row are created dynamically using the dashboardColumns array
                     * These property names for these two objects must match.
                     */
-                    $.each(dashboardColumns, function (columnName, columnProperites) {
-                        ProjectList.setColumnValues(row, currC, dashboardColumns[columnProperites.ClassName], item[columnProperites.ClassName], item, false);
-                        currC++;
-                    });
+                    //$.each(dashboardColumns, function (columnName, columnProperites) {
+                    //    ProjectList.setColumnValues(row, currC, dashboardColumns[columnProperites.ClassName], item[columnProperites.ClassName], item, false);
+                    //    currC++;
+                    //});
 
                     currR += 1;
                 } /* end createRow */
@@ -314,43 +366,31 @@ var ProjectList = {
 
     },
     /***
-     * This is where all the fun stuff happens.  Based on column values, render a cell.
+     * Call http method and send the JSON to the controller at path.
      */
-    setColumnValues: function (row, columnNumber, columnToAdd, milestone, item, isMilestone) {
+    callHttpMethod: function (path, httpMethod, jsonData, successMethod, successMethodParams, errorMethod, responseObjectDataLocation) {
         try {
-            var table = $('#dataDataID');
-
-            $(columnToAdd.SelectorClass, row).attr("cell-" + row.getAttribute("data-row-num") + "-" + columnNumber);
-
-            if (columnToAdd.IsVisible != true) {
-                var t = table.dataTable();
-                var r = columnToAdd.ColumnPosition;
-                table.dataTable().fnSetColumnVis(columnToAdd.ColumnPosition, false);
+            if (httpMethod == "GET") {
+                $.get(path, function (response) {
+                    if (successMethod != null && successMethod != 'Undefined') {
+                        var responseData = [];
+                        if (responseObjectDataLocation != null && responseObjectDataLocation != undefined) {
+                            responseData = response[responseObjectDataLocation];
+                        }
+                        else {
+                            responseData = response;
+                        }
+                        successMethod(successMethodParams, responseData);
+                    }
+                });
             }
-
-            /* This method needs to be refractord for a general case popover.  Currently is it hardcoded to 
-             * display predecessors.
-             */
-            if (columnToAdd.HasPopover) {
-                //ProjectList.createPopover(columnToAdd, row, milestone);
-            }
-            /* if this column had a detail row, then add a link and create the hidden detail row. */
-            if (columnToAdd.HasDetailRow) {
-                //ProjectList.createDetailRow(row, columnToAdd, milestone, item);
-            }
-            /* This method needs to be refractored.  Currently it creates a textarea named Notes that id editable by the user. */
-            if (columnToAdd.HasEditableTextarea) {
-                //ProjectList.createTextarea(columnToAdd, row, item[columnToAdd.ClassName]);
-            } 
-            if (columnToAdd.HasEditableTextbox) {
-                //ProjectList.createTextarea(columnToAdd.ClassName, row, item.Metadata.Data);
-            }
-
-        } catch (ex) {
-            alert('Something went wrong in setColumnValues!\n' + ex);
+            else
+                alert("only supporting GET for now.")
+        } catch (error) {
+            alert("Error in callHttpMethod");
         }
-
     },
+
     clearAllColumnSelects: function (selector, defaultValue) {
         var selector = $(selector); //.multiselect("uncheckAll");
         selector.val("")
@@ -470,21 +510,21 @@ $(document).ready(function () {
     //    if( $("#HideSidePanelConfig").text() )
     //})
 
-    $("#FilterDiv").on("hide.bs.collapse", function () {
-        $("#revealElement").html(glyphDown + spanFilters);
-        $("#page-header").attr("class","page-header");
+    //$("#FilterDiv").on("hide.bs.collapse", function () {
+    //    $("#revealElement").html(glyphDown + spanFilters);
+    //    $("#page-header").attr("class","page-header");
 
-    });
+    //});
 
-    $("#FilterDiv").on("show.bs.collapse", function () {
-        $("#revealElement").html(glyphUp + spanFilters);
-        $("#page-header").attr("class", "page-header-pad");
-    });
+    //$("#FilterDiv").on("show.bs.collapse", function () {
+    //    $("#revealElement").html(glyphUp + spanFilters);
+    //    $("#page-header").attr("class", "page-header-pad");
+    //});
     
-    $("select.demo2").change( function () {
-        searchCriteria.CustomProjectTypeList = $(this).val();
-        ProjectList.getProjectsUsingFilter();
-    })
+    //$("select.demo2").change( function () {
+    //    searchCriteria.CustomProjectTypeList = $(this).val();
+    //    ProjectList.getProjectsUsingFilter();
+    //})
 
     jQuery(function ($) {
         $(document).ajaxStop(function () {

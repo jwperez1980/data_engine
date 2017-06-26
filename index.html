@@ -11,76 +11,38 @@
     <link href="./Content/font-awesome.min.css" rel="stylesheet" />
     <link href="./Content/dashboard.css" rel="stylesheet" />
 
-
 </head>
 <body>
 
     <div class="container">
 
-        <nav class="navbar navbar-default" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="http://localhost:53055/index.html">Dashboard</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="http://localhost:56344/index.html">Home</a></li>
-
+                    <li class="active"><a href="#">Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Select Source File
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/index.html">Generic Data</a></li>
+                            <li><a href="/index.html?sourcefile=users">Users</a></li>
+                            <li><a href="/index.html?sourcefile=employees">Employees</a></li>
+                            <li><a href="/index.html?sourcefile=starwars">Star wars</a></li>
+                            <li><a href="/index.html?sourcefile=runners">Runners</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </nav>
-        <div id="main-panel">
-            <div id="SidePanel" class="side-panel">
-                <div id="ToggleLeftPane" class="float-right nav" style="cursor:pointer;width:10px" ata-toggle="tooltip" title="Click to hide/show panel">
-                    <i class="fa fa-caret-square-o-left" aria-hidden="true" data-toggle="tooltip" title="Hide Filter Pallette"></i>
-                </div>
-                <label class="side-panel-header" style="cursor:pointer">Filter Pallette</label>
-                <nav id="NavSidePanelConfigBox" class="navbar navbar-defaultk side-panel-" role="navigation">
-                    <div id="SidePanelConfigBox">
-                        <ul class="nav navbar-nav side-panel-">
-                            <li id="SelectFiltersToDisplay" class="side-panel-config-display"><i class="fa fa-cogs" aria-hidden="true" data-toggle="tooltip" title="Configure which filters are visible"></i></li>
-                        </ul>
-                        <ul class="nav navbar-nav side-panel-">
-                            <li id="ClearAllSidePanelFilters" class="side-panel-config-clear">
-                                <i class="fa fa-ban" aria-hidden="true" data-toggle="tooltip" title="Clear all filter selections"></i>
-                            </li>
-                            <li id="CloseAllSidePanelFilters" class="side-panel-config-close"><i class="fa fa-minus" aria-hidden="true" data-toggle="tooltip" title="Close all filters"></i></li>
-                            <li id="OpenAllSidePanelFilters" class="side-panel-config-open"><i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" title="Open all filters"></i></li>
-                        </ul>
-                    </div>
-                </nav>
-                <!--<ul class="nav navbar-nav side-panel-">
-                    <li id="HideSidePanelConfig" class="side-panel-config-hide">Hide Config Panel</li>
-                </ul>-->
-                <div id="SideFilterDiv" class="side-panel-div"></div>
-            </div>
 
-            <div class="data-panel">
-                <div id="FilterDiv">
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal HTML -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Some button</button>
-                </div>
+        <div class="data-panel">
+            <div id="FilterDiv">
             </div>
         </div>
     </div>
@@ -115,61 +77,98 @@
 
     })
 
-
-    /* this simulates getting data from some external source for demonstartion purposes */
-    /* For a real app, there would be an AJAX call that returns the two objects needed */
-    /*
-
-        columnOrder = [];
-        data = new Object();
-        try {                
-            $.ajax({  
-                url: <somepath>,
-                type: GET,
-                contentType: "application/json; charset=utf-8",
-                datatype: "json",
-                success: function (response) {
-                    if(successMethod !== null && successMethod != 'Undefined')
-                        columnOrder = response.columnOrder;
-                        data = response.data;
-                },
-                error: function (error) {
-                    if(errorMethod != null && errorMethod != 'Undefined')
-                        errorMethod.onError();
-                    alert("Error calling service: " + path + " using method: " + httpMethod);
-                },
-            });
-        } catch (error) {
-            alert("Error getting data");
-        }
-
-
-    */
-
-    /* Use displayExternalData to load any data into the page. */
-    var columnOrder = ["aaaa", "bbbb", "cccc", "dddd", "eeee", "ffff", "gggg", "hhhh", "iiii", "jjjj", "kkkk"];
-    var data = new Object();
-
-    for (var i = 0; i < 10000; i++) {
-        data[i] = { aaaa: Math.round(Math.random() * 100), bbbb: Math.round(Math.random() * 100), cccc: Math.round(Math.random() * 100), dddd: Math.round(Math.random() * 100), eeee: Math.round(Math.random() * 100), ffff: Math.round(Math.random() * 100), gggg: Math.round(Math.random() * 100), hhhh: Math.round(Math.random() * 100), iiii: Math.round(Math.random() * 100), jjjj: Math.round(Math.random() * 100), kkkk: Math.round(Math.random() * 100) }
+    var loadPage = function(columnOrder, data) {
+        ProjectList.displayExternalData(
+            null,
+            data
+        );
     }
 
-    //var columnOrder = ["User Name", "First Name", "Last Name"];
-    //data = [
-    //    {"User Name": "Sammy", "First Name": "Sam", "Last Name": "Green"},
-    //    { "User Name": "Sylvia", "First Name": "Natasha", "Last Name": "Galloway" },
-    //    { "User Name": "Jilly", "First Name": "Jilliam", "Last Name": "McKoy" },
-    //    { "User Name": "Moonstruck", "First Name": "Paul", "Last Name": "Liermach" },
-    //    { "User Name": "Eddee", "First Name": "Edward", "Last Name": "Sloop" },
-    //    { "User Name": "Stvpy", "First Name": "Steve", "Last Name": "Puvy" },
-    //    { "User Name": "Yelp", "First Name": "June", "Last Name": "Tyler" },
-    //    { "User Name": "Humde", "First Name": "Hellen", "Last Name": "Smee" }
-    //]
+    var columnOrder = [];
+    var data = {};
 
-    ProjectList.displayExternalData(
-        columnOrder,
-        data
-    );
+    var params = window.location.search.substring(1).split("=");
+    var directpage = "";
+    if (params.length > 1) {
+        directpage = params[1];
+    }
+
+    /* viewName is a var in the dashboard.js include */
+    viewName = directpage;
+
+    if (directpage == "") {
+        /* Use displayExternalData to load any data into the page. */
+        columnOrder = null; ["aaaa", "bbbb", "cccc", "dddd", "eeee", "ffff", "gggg", "hhhh", "iiii", "jjjj", "kkkk"];
+        data = new Object();
+
+        for (var i = 0; i < 10000; i++) {
+            data[i] = { aaaa: Math.round(Math.random() * 100), bbbb: Math.round(Math.random() * 100), cccc: Math.round(Math.random() * 100), dddd: Math.round(Math.random() * 100), eeee: Math.round(Math.random() * 100), ffff: Math.round(Math.random() * 100), gggg: Math.round(Math.random() * 100), hhhh: Math.round(Math.random() * 100), iiii: Math.round(Math.random() * 100), jjjj: Math.round(Math.random() * 100), kkkk: Math.round(Math.random() * 100) }
+        }
+
+        loadPage(columnOrder, data);
+    }
+    else if (directpage == "users") {
+        columnOrder = null; ["User Name", "First Name", "Last Name"];
+        data = [
+            {"User Name": "Sammy", "First Name": "Sam", "Last Name": "Green"},
+            { "User Name": "Sylvia", "First Name": "Natasha", "Last Name": "Galloway" },
+            { "User Name": "Jilly", "First Name": "Jilliam", "Last Name": "McKoy" },
+            { "User Name": "Moonstruck", "First Name": "Paul", "Last Name": "Liermach" },
+            { "User Name": "Eddee", "First Name": "Edward", "Last Name": "Sloop" },
+            { "User Name": "Stvpy", "First Name": "Steve", "Last Name": "Puvy" },
+            { "User Name": "Yelp", "First Name": "June", "Last Name": "Tyler" },
+            { "User Name": "Humde", "First Name": "Hellen", "Last Name": "Smee" }
+        ]
+        loadPage(columnOrder, data);
+    }
+    else if (directpage == "employees") {
+        columnOrder = null; ["Name", "Position", "Office", "Extension", "Start Data", "Salary"];
+        data = [
+            {
+                Name: "Tiger Nixon",
+                Position: "System Architect",
+                Office: "Edinburgh",
+                Extension: "5421",
+                "Start Date": "2011/04/25",
+                Salary: "$320,800"
+            },
+            {
+                Name: "Garrett Winters",
+                Position: "Accountant",
+                Office: "Tokyo",
+                Extension: "8422",
+                "Start Date": "2011/07/25",
+                Salary: "$170,750"
+            },
+        ]
+
+        loadPage(columnOrder, data);
+
+    }
+    else if (directpage == "starwars") {
+        ProjectList.callHttpMethod("https://swapi.co/api/people/?format=json", "GET", null, loadPage, null, null, "results");
+        //$.get("https://swapi.co/api/people/?format=json", function (jsonResponse) {
+        //    data = jsonResponse.results;
+        //    //columnOrder = ["name", "height", "hair_color", "gender"]
+        //    loadPage(null, data);
+        //});
+
+    }
+
+    else if (directpage == "runners") {
+        ProjectList.callHttpMethod("https://quiet-refuge-72491.herokuapp.com/runners.json", "GET", null, loadPage, null, null, null);
+        //$.get("https://quiet-refuge-72491.herokuapp.com/runners.json", function (jsonResponse) {
+        //    //columnOrder = ["name", "height", "hair_color", "gender"]
+        //    loadPage(null, jsonResponse);
+        //});
+          
+    }
+
+
+
+
+
+
     </script>
 </body>
 </html>
