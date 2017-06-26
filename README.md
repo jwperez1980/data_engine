@@ -5,13 +5,11 @@ This extension was created to demostrate how to create a single page app in Java
 
 Lists of data sourcs can be created and passed to the extension dynamically.  For example:
 
-![restServiceList.jpg]({{site.baseurl}}/restServiceList.jpg)
-
-<select>
-	<option value="https://swapi.co/api/people/?format=json">REST Service</option>
-	<option value="<some path to JSON on server/theFile.json">File from Server</option>
-	<option value="<JS array you create on the fly/dynamicFile">JA Object</option>
-</select>
+  <select>
+      <option value="https://swapi.co/api/people/?format=json">REST Service</option>
+      <option value="<some path to JSON on server/theFile.json">File from Server</option>
+      <option value="<JS array you create on the fly/dynamicFile">JA Object</option>
+  </select>
 
 - The list could be created dynamically from a DB table so that adding a row to the table creates a new option in the list.
 - The list could be manipulated in the JS by the user, to add new URLs as needed.#
