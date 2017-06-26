@@ -28,6 +28,7 @@ var ProjectList = {
         $.each (columnOrder, function(index, name) {
             column = new Object();
             column.ClassName = name;
+            column.DisplayName = name;
             dashboardColumns[column.ClassName] = column;
             
         })
@@ -374,6 +375,21 @@ var ProjectList = {
 };
 
 $(document).ready(function () {
+    $(document).ready(function () {
+        $("#ToggleLeftPane").on("click", function (event) {
+            var x = $("#SidePanel").width();
+            if ($("#SidePanel").width() > 150) {
+                $("#SidePanel").width("15px");
+                $("[class*=side-panel-]").hide();
+                $("#ToggleLeftPane").attr("class", "floate-left").html('<i class="fa fa-caret-square-o-right" aria-hidden="true" data-toggle="tooltip" title="Show Filter Pallette"></i>');
+            }
+            else {
+                $("#SidePanel").width("200px");
+                $("[class*=side-panel-]").show();
+                $("#ToggleLeftPane").attr("class", "float-right").html('<i class="fa fa-caret-square-o-left" aria-hidden="true" data-toggle="tooltip" title="Hide Filter Pallette"></i>');
+            }
+        })
+    })
 
     $("input[type='search']").attr("placeholder","type sreach string");
 
