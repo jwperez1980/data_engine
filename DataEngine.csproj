@@ -125,6 +125,8 @@
     <Content Include="scripts\glyphicons-halflings-regular.ttf" />
     <Content Include="scripts\glyphicons-halflings-regular.woff" />
     <Content Include="scripts\glyphicons-halflings-regular.woff2" />
+    <Content Include="scripts\users.json" />
+    <Content Include="scripts\employees.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -136,6 +138,7 @@
     <Content Include="index.html" />
     <Content Include="scripts\fontawesome-webfont.svg" />
     <Content Include="scripts\glyphicons-halflings-regular.svg" />
+    <Content Include="scripts\resources.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

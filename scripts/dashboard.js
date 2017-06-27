@@ -41,6 +41,9 @@ var ProjectList = {
         var x = response;
         try {
 
+            $("#main-panel").remove();
+            $("#myModel").remove();
+
             var main_panel = 
             "<div id=\"main-panel\">" +
             "    <div id=\"SidePanel\" class=\"side-panel\">" +
@@ -326,10 +329,22 @@ var ProjectList = {
     /***
      * Call http method and send the JSON to the controller at path.
      */
-    callHttpMethod: function (path, httpMethod, jsonData, successMethod, successMethodParams, errorMethod, responseObjectDataLocation) {
+    callHttpMethod: function (path, httpMethod, jsonData, successMethod, successMethodParams, errorMethod) {
         try {
             if (httpMethod == "GET") {
-                $.get(path, function (response) {
+                var restPath = path;
+                var responseObjectDataLocation =  null;
+                var params = path.replace(/(^\?)/,'').split("&").map(function(n){return n = n.split("="),this[n[0]] = n[1],this}.bind({}))[0];
+                if (params["jsonLocation"] != undefined) {
+                    //Only one possible param for now
+                    responseObjectDataLocation = params["jsonLocation"];
+                    restPath = path.split("&")[0];
+                }
+                else {
+                    restPath = path;
+                }
+
+                $.get(restPath, function (response) {
                     if (successMethod != null && successMethod != 'Undefined') {
                         var responseData = [];
                         if (responseObjectDataLocation != null && responseObjectDataLocation != undefined) {

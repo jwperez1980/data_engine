@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <!--<link href="Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />-->
 
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
     <!-- Latest compiled and minified CSS -->
@@ -28,13 +27,24 @@
                             Select Source File
                             <span class="caret"></span>
                         </a>
+                        <!--In and application with a DB, this would be pulled from there instead of hard-coded-->
                         <ul class="dropdown-menu">
-                            <li><a href="/index.html">Generic Data (Dynamic generated data)</a></li>
-                            <li><a href="/index.html?sourcefile=users">Users (Local file)</a></li>
-                            <li><a href="/index.html?sourcefile=employees">Employees (local file)</a></li>
-                            <li><a href="/index.html?sourcefile=starwars">Star wars (REST: https://swapi.co/api/people/?format=json )</a></li>
-                            <li><a href="/index.html?sourcefile=runners">Runners(REST: https://quiet-refuge-72491.herokuapp.com/runners.json )</a></li>
+                            <li><a class="chosenURL" href="#" data-url="dynamic">Dynamic Data (Dynamic generated data)</a></li>
+                            <li><a class="chosenURL" href="#" data-url="./scripts/users.json">Users (./scripts/users.json)</a></li>
+                            <li><a class="chosenURL" href="#" data-url="./scripts/employees.json">Employees (./scripts/employees.json)</a></li>
+                            <li><a class="chosenURL" href="#" data-url="https://swapi.co/api/people/?format=json&jsonLocation=results">Star wars (REST: https://swapi.co/api/people/?format=json )</a></li>
+                            <li><a class="chosenURL" href="#" data-url="https://quiet-refuge-72491.herokuapp.com/runners.json">Runners(REST: https://quiet-refuge-72491.herokuapp.com/runners.json )</a></li>
                         </ul>
+                    </li>
+                    <li class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button class="dropdown-item" type="button">Action</button>
+                            <button class="dropdown-item" type="button">Another action</button>
+                            <button class="dropdown-item" type="button">Something else here</button>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -54,101 +64,33 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-    <script src="./scripts/dashboard-models.js"></script>
-    <script src="./scripts/options.js"></script>
     <script src="./scripts/dashboard.js"></script>
+    <script src="./scripts/resources.js"></script>
 
     <script>
 
-    var loadPage = function(columnOrder, data) {
-        ProjectList.displayExternalData(
-            null,
-            data
-        );
-    }
-
-    var columnOrder = [];
-    var data = {};
-
-    var params = window.location.search.substring(1).split("=");
-    var directpage = "";
-    if (params.length > 1) {
-        directpage = params[1];
-    }
-
-    /* viewName is a var in the dashboard.js include */
-    viewName = directpage;
-
-    if (directpage == "") {
-        /* Use displayExternalData to load any data into the page. */
-        columnOrder = null; ["aaaa", "bbbb", "cccc", "dddd", "eeee", "ffff", "gggg", "hhhh", "iiii", "jjjj", "kkkk"];
-        data = new Object();
-
-        for (var i = 0; i < 10000; i++) {
-            data[i] = { aaaa: Math.round(Math.random() * 100), bbbb: Math.round(Math.random() * 100), cccc: Math.round(Math.random() * 100), dddd: Math.round(Math.random() * 100), eeee: Math.round(Math.random() * 100), ffff: Math.round(Math.random() * 100), gggg: Math.round(Math.random() * 100), hhhh: Math.round(Math.random() * 100), iiii: Math.round(Math.random() * 100), jjjj: Math.round(Math.random() * 100), kkkk: Math.round(Math.random() * 100) }
+        var loadPage = function (columnOrder, data) {
+            ProjectList.displayExternalData(
+                null,
+                data
+            );
         }
 
-        loadPage(columnOrder, data);
-    }
-    else if (directpage == "users") {
-        columnOrder = null; ["User Name", "First Name", "Last Name"];
-        data = [
-            {"User Name": "Sammy", "First Name": "Sam", "Last Name": "Green"},
-            { "User Name": "Sylvia", "First Name": "Natasha", "Last Name": "Galloway" },
-            { "User Name": "Jilly", "First Name": "Jilliam", "Last Name": "McKoy" },
-            { "User Name": "Moonstruck", "First Name": "Paul", "Last Name": "Liermach" },
-            { "User Name": "Eddee", "First Name": "Edward", "Last Name": "Sloop" },
-            { "User Name": "Stvpy", "First Name": "Steve", "Last Name": "Puvy" },
-            { "User Name": "Yelp", "First Name": "June", "Last Name": "Tyler" },
-            { "User Name": "Humde", "First Name": "Hellen", "Last Name": "Smee" }
-        ]
-        loadPage(columnOrder, data);
-    }
-    else if (directpage == "employees") {
-        columnOrder = null; ["Name", "Position", "Office", "Extension", "Start Data", "Salary"];
-        data = [
-            {
-                Name: "Tiger Nixon",
-                Position: "System Architect",
-                Office: "Edinburgh",
-                Extension: "5421",
-                "Start Date": "2011/04/25",
-                Salary: "$320,800"
-            },
-            {
-                Name: "Garrett Winters",
-                Position: "Accountant",
-                Office: "Tokyo",
-                Extension: "8422",
-                "Start Date": "2011/07/25",
-                Salary: "$170,750"
-            },
-        ]
+        var generic = getDynamicData;
 
-        loadPage(columnOrder, data);
+        $(document).ready(function () {
+            $(".chosenURL").on("click", function() { 
+                var url = $(this).attr("data-url");
 
-    }
-    else if (directpage == "starwars") {
-        ProjectList.callHttpMethod("https://swapi.co/api/people/?format=json", "GET", null, loadPage, null, null, "results");
-        //$.get("https://swapi.co/api/people/?format=json", function (jsonResponse) {
-        //    data = jsonResponse.results;
-        //    //columnOrder = ["name", "height", "hair_color", "gender"]
-        //    loadPage(null, data);
-        //});
+                if (url == "dynamic") {
+                    loadPage(null, getDynamicData());
+                }
+                else {
+                    ProjectList.callHttpMethod(url, "GET", null, loadPage, null, null);
 
-    }
-
-    else if (directpage == "runners") {
-        ProjectList.callHttpMethod("https://quiet-refuge-72491.herokuapp.com/runners.json", "GET", null, loadPage, null, null, null);
-        //$.get("https://quiet-refuge-72491.herokuapp.com/runners.json", function (jsonResponse) {
-        //    //columnOrder = ["name", "height", "hair_color", "gender"]
-        //    loadPage(null, jsonResponse);
-        //});
-          
-    }
-
-
-
+                }
+            });
+        })
 
 
 

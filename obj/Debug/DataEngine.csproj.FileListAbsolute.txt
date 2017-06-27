@@ -64,3 +64,36 @@ C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\bin\M
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\obj\Debug\DataEngine.csprojResolveAssemblyReference.cache
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\obj\Debug\DataEngine.dll
 C:\Users\adria\Documents\Visual Studio 2015\Projects\DataEngine\DataEngine\obj\Debug\DataEngine.pdb
+C:\a_development\repo\DataEngine\DataEngine\bin\ApplicationInsights.config
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\csc.exe
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\System.Collections.Immutable.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\System.Reflection.Metadata.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\vbc.exe
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\VBCSCompiler.exe
+C:\a_development\repo\DataEngine\DataEngine\bin\roslyn\VBCSCompiler.exe.config
+C:\a_development\repo\DataEngine\DataEngine\bin\DataEngine.dll.config
+C:\a_development\repo\DataEngine\DataEngine\bin\DataEngine.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\DataEngine.pdb
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.Agent.Intercept.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.DependencyCollector.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.Web.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.WindowsServer.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.ApplicationInsights.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.DependencyCollector.xml
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.Web.xml
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.AI.WindowsServer.xml
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.ApplicationInsights.xml
+C:\a_development\repo\DataEngine\DataEngine\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\a_development\repo\DataEngine\DataEngine\obj\Debug\DataEngine.csprojResolveAssemblyReference.cache
+C:\a_development\repo\DataEngine\DataEngine\obj\Debug\DataEngine.dll
+C:\a_development\repo\DataEngine\DataEngine\obj\Debug\DataEngine.pdb
