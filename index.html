@@ -13,10 +13,9 @@
 </head>
 <body>
 
-    <div class="container">
 
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
+        <nav class="navbar navbar-default navbar-static-top"">
+            <div >
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
@@ -45,7 +44,6 @@
             <div id="FilterDiv">
             </div>
         </div>
-    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"
@@ -58,16 +56,13 @@
     <script src="./scripts/resources.js"></script>
 
     <script>
-
+        // Call back method that passes data to DataTables constructor
         var loadPage = function (columnOrder, data) {
-            ProjectList.displayExternalData(
-                null,
-                data
-            );
+            ProjectList.displayExternalData(null, data);
         }
 
-        var generic = getDynamicData;
-
+//        var generic = getDynamicData;
+        // onclick event when source is chosen in the select box
         $(document).ready(function () {
             $(".chosenURL").on("click", function() { 
                 var url = $(this).attr("data-url");
@@ -76,6 +71,7 @@
                     loadPage(null, getDynamicData());
                 }
                 else {
+                    // Use AJAX to get data using the REST usel provided.  Pass callback method
                     ProjectList.callHttpMethod(url, "GET", null, loadPage, null, null);
 
                 }

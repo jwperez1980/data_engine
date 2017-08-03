@@ -3,6 +3,24 @@
     console.log('Page load time is ' + loadTime);
 }
 
+var $loadingSpinner = $("<div></div>", { id: "loadingSpinner", class: "upperLayer" })
+var $loadingImage = $("<img></img>", { id: "loadingImage", src: "../Content/images/InternetSlowdown_Day.gif" })
+//src="smiley.gif" alt="Smiley face" height="42" width="42"
+$loadingSpinner.append($loadingImage);
+$("body").append($loadingSpinner);
+$('#loadingImage').hide();
+
+jQuery.ajaxSetup({
+
+    beforeSend: function () {
+        $('#loadingImage').show();
+    },
+    complete: function () {
+        $('#loadingImage').hide();
+    },
+    success: function () { }
+});
+
 /* dashboardColumns: This is te list of columns to display and properties describing how to display */
 var dashboardColumns = {}
 var dTable;
@@ -93,6 +111,7 @@ var ProjectList = {
             "        </div>" +
             "    </div>" +
             "</div>";
+
 
 
             /* create the table to load DataTable data into */
@@ -489,14 +508,5 @@ $(document).ready(function () {
         });
         $('#myModal').modal('hide');
     })
-
-    jQuery(function ($) {
-        $(document).ajaxStop(function () {
-            $("#ajax_loader").hide();
-        });
-        $(document).ajaxStart(function () {
-            $("#ajax_loader").show();
-        });
-    });
-
+   
 });

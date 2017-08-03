@@ -1,4 +1,12 @@
-﻿.container {
+﻿
+div.upperLayer {
+    position: absolute;
+    left: 25%;
+    top: 20%;
+    z-index: 100;
+}
+
+.container {
     /*margin-left: 20px;*/  
 }
 
