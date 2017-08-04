@@ -257,10 +257,6 @@ var ProjectList = {
                 //class="selectpicker" data-style="btn-primary"
                 //var select = $('<select class="columnSelect selectpicker" multiple data-max-options="3" data-live-search="true"/>')
                 
-                var a = dashboardColumns;
-                var b = colIdx;
-                var c = displayColumns[colIdx]["data"];
-                
                 var select = $('<select id=' + displayColumns[colIdx]["data"] + '_select' + colIdx + ' class="columnSelect" multiple size=1"/>')
                 .appendTo(
                     //api.column(colIdx).header()
@@ -325,7 +321,7 @@ var ProjectList = {
                         dTable.columns(index).search(this.value).draw();
                         //}
                     })
-                var hideme = $("<button type='button' class='btn  btn-link display-btn'>Hide</button>").click(
+                var hideme = $("<button type='button' class='btn  btn-link display-btn'>Show</button>").click(
                     function (event) {
                         if ($(this).text() == "Hide") {
                             $("#" + currId).hide();
@@ -337,7 +333,8 @@ var ProjectList = {
                         }
                         event.stopPropagation();
                     });
-                $(this).append("<br/>", $input, hideme);
+                $input.hide();
+//                $(this).append("<br/>", $input, hideme);
             })
 
             $(document).ready(function () {

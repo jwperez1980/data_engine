@@ -1,4 +1,10 @@
 ﻿
+tbody tr.odd td, tbody tr.even td {
+    min-width: 80px;
+    max-width: 235px;
+    word-wrap: break-word;
+}
+
 div.upperLayer {
     position: absolute;
     left: 25%;
