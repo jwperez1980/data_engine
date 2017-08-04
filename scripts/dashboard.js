@@ -252,15 +252,19 @@ var ProjectList = {
             /* Create select box for each column */
             api = $('#dataDataID').DataTable()
             api.columns().flatten().each(function (colIdx) {
+
+                div = $("<div class='side-filter-div'></div>");
+
                 // Create the select list and search operation
                 var selected = "";
                 //class="selectpicker" data-style="btn-primary"
                 //var select = $('<select class="columnSelect selectpicker" multiple data-max-options="3" data-live-search="true"/>')
                 
-                var select = $('<select id=' + displayColumns[colIdx]["data"] + '_select' + colIdx + ' class="columnSelect" multiple size=1"/>')
+                var select = $('<select id=' + displayColumns[colIdx]["data"] + '_select' + colIdx + ' class="columnSelect" multiple size=1"/></div')
                 .appendTo(
                     //api.column(colIdx).header()
-                    $("#SideFilterDiv")
+                    //$("#SideFilterDiv")
+                    div
                 )
                 .append($('<option value="Choose">Choose</option>'))
                 .on('change', function () {
@@ -306,7 +310,8 @@ var ProjectList = {
                     }
  
                 });
-                select.before('<br /><label id="' + displayColumns[colIdx]["data"] + '_lbl' + colIdx + '" class="side-panel-filter-header">' + displayColumns[colIdx]["data"] + ':</label>');
+                select.before('<label id="' + displayColumns[colIdx]["data"] + '_lbl' + colIdx + '" class="side-panel-filter-header">' + displayColumns[colIdx]["data"] + ':</label>');
+                $("#SideFilterDiv").append(div);
             });
 
             /* Add the text search box for each column. */
