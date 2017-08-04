@@ -340,6 +340,113 @@ var ProjectList = {
                 $(this).append("<br/>", $input, hideme);
             })
 
+            $(document).ready(function () {
+                $(document).ready(function () {
+                    $("#ToggleLeftPane").on("click", function (event) {
+                        var x = $("#SidePanel").width();
+                        if ($("#SidePanel").width() > 150) {
+                            $("#SidePanel").width("15px");
+                            $("[class*=side-panel-]").hide();
+                            $("#ToggleLeftPane").attr("class", "floate-left").html('<i class="fa fa-caret-square-o-right" aria-hidden="true" data-toggle="tooltip" title="Show Filter Pallette"></i>');
+                        }
+                        else {
+                            $("#SidePanel").width("200px");
+                            $("[class*=side-panel-]").show();
+                            $("#ToggleLeftPane").attr("class", "float-right").html('<i class="fa fa-caret-square-o-left" aria-hidden="true" data-toggle="tooltip" title="Hide Filter Pallette"></i>');
+                        }
+                    })
+                })
+
+                $("input[type='search']").attr("placeholder", "type sreach string");
+
+                $(".side-panel-config-clear").on("click", function (event) {
+                    ProjectList.clearAllColumnSelects("div.side-panel-div select", "");
+                    dTable
+                     .search('')
+                     .columns().search('')
+                     .draw();
+                })
+
+                $(".side-panel-config-close").on("click", function (event) {
+                    ProjectList.setAllColumnSelectsSize("div.side-panel-div select", 1);
+                })
+
+                $("#OpenAllSidePanelFilters").on("click", function (event) {
+                    ProjectList.setAllColumnSelectsSize("div.side-panel-div select", 6);
+                })
+
+                /* Hide/Show side panel based on clicking the gear icon */
+                $(".side-panel-config-hide").on("click", function (event) {
+                    if ($(".side-panel-config-hide").text() == "Hide Config Panel") {
+                        $("li[class*='side-panel-'").hide();
+                        $("#SidePanel").hide();
+                        $(".side-panel-config-hide").text("Show Config Panel");
+                        $(".side-panel-config-hide").show();
+                    }
+                    else {
+                        $("#NavSidePanelConfigBox").show();
+                        $("li[class*='side-panel-'").show();
+                        $(".side-panel-config-hide").text("Hide Config Panel");
+                    }
+
+                })
+
+                /* The modal to configure which filters display */
+                $(".side-panel-config-display").on("click", function (event) {
+                    var blueprint = '<div class="row"><div class="col-sm-12 checkbox"><label class="float-left choose-filter-checkbox"><input type="checkbox" id="xxxx" value="xxxx" checked>yyyy</label></div></div>'
+                    var htmlform = '<div class="container">';
+                    var i = 0;
+                    $.each(dashboardColumns, function (index, columnObj) {
+                        var newBlueprint = blueprint;
+                        if ($("#" + columnObj.DisplayName + "_select" + i).is(':visible') == false) {
+                            newBlueprint = blueprint.replace("checked", "");
+                        }
+
+                        htmlform += newBlueprint
+                            .replace("xxxx", columnObj.DisplayName + "_chkbox" + i) //the id
+                            .replace("xxxx", columnObj.DisplayName)                 //the value
+                            .replace("yyyy", columnObj.DisplayName);                //displayed text
+                        i++;
+                    })
+
+                    htmlform += '</div>';
+
+                    $("div.modal-header").html("<label>Select filters to display</label>");
+                    $("div.modal-body").html("");
+                    $("div.modal-body").html(htmlform);
+                    $("div.modal-footer > .btn-primary").prop('class', 'btn btn-primary btn-sm btn-success').text("Sumbit");
+                    $("div.modal-footer > .btn-default").prop('class', 'btn btn-default btn-sm').text("Cancel");
+                    $("div.modal-dialog").prop('class', 'modal-dialog modal-sm')
+                    $("#myModal").modal("show", function () { });
+                })
+
+                /* click submit button on side panel config modal */
+                $("div.modal-footer > .btn-primary").click(function (event) {
+
+                    event.preventDefault();
+
+                    var i = 0;
+                    $.each(dashboardColumns, function (index, columnName) {
+
+                        var chkbx_name = columnName["DisplayName"] + "_chkbox" + i;
+                        var select = columnName["DisplayName"] + "_select" + i;
+
+                        var lbl_name = columnName["DisplayName"] + "_lbl" + i;
+                        if ($("#" + chkbx_name).is(":checked")) {
+                            $("#" + select).show();
+                            $("#" + lbl_name).show();
+                        }
+                        else {
+                            $("#" + select).hide();
+                            $("#" + lbl_name).hide();
+                        }
+                        i++;
+                    });
+                    $('#myModal').modal('hide');
+                })
+
+            });
+
         } catch (ex) {
             alert('Something went wrong in renderPage!\n' + ex);
         }
@@ -407,106 +514,3 @@ var ProjectList = {
         alert(message);
     }
 };
-
-$(document).ready(function () {
-    $(document).ready(function () {
-        $("#ToggleLeftPane").on("click", function (event) {
-            var x = $("#SidePanel").width();
-            if ($("#SidePanel").width() > 150) {
-                $("#SidePanel").width("15px");
-                $("[class*=side-panel-]").hide();
-                $("#ToggleLeftPane").attr("class", "floate-left").html('<i class="fa fa-caret-square-o-right" aria-hidden="true" data-toggle="tooltip" title="Show Filter Pallette"></i>');
-            }
-            else {
-                $("#SidePanel").width("200px");
-                $("[class*=side-panel-]").show();
-                $("#ToggleLeftPane").attr("class", "float-right").html('<i class="fa fa-caret-square-o-left" aria-hidden="true" data-toggle="tooltip" title="Hide Filter Pallette"></i>');
-            }
-        })
-    })
-
-    $("input[type='search']").attr("placeholder","type sreach string");
-
-    $(".side-panel-config-clear").on("click", function (event) {
-        ProjectList.clearAllColumnSelects("div.side-panel-div select", "");
-    })
-
-    $(".side-panel-config-close").on("click", function (event) {
-        ProjectList.setAllColumnSelectsSize("div.side-panel-div select", 1);
-    })
-
-    $("#OpenAllSidePanelFilters").on("click", function (event) {
-        ProjectList.setAllColumnSelectsSize("div.side-panel-div select", 6);
-    })
-
-    /* Hide/Show side panel based on clicking the gear icon */
-    $(".side-panel-config-hide").on("click", function (event) {
-        if ($(".side-panel-config-hide").text() == "Hide Config Panel") {
-            $("li[class*='side-panel-'").hide();
-            $("#SidePanel").hide();
-            $(".side-panel-config-hide").text("Show Config Panel");
-            $(".side-panel-config-hide").show();
-        }
-        else {
-            $("#NavSidePanelConfigBox").show();
-            $("li[class*='side-panel-'").show();
-            $(".side-panel-config-hide").text("Hide Config Panel");
-        }
-
-    })
-
-    /* The modal to configure which filters display */
-    $(".side-panel-config-display").on("click", function (event) {
-        var blueprint = '<div class="row"><div class="col-sm-12 checkbox"><label class="float-left choose-filter-checkbox"><input type="checkbox" id="xxxx" value="xxxx" checked>yyyy</label></div></div>'
-        var htmlform = '<div class="container">';
-        var i = 0;
-        $.each(dashboardColumns, function (index, columnObj) {
-            var newBlueprint = blueprint;
-            if ($("#" + columnObj.DisplayName + "_select" + i).is(':visible') == false) {
-                newBlueprint = blueprint.replace("checked", "");
-            }
-
-            htmlform += newBlueprint
-                .replace("xxxx", columnObj.DisplayName + "_chkbox" + i) //the id
-                .replace("xxxx", columnObj.DisplayName)                 //the value
-                .replace("yyyy", columnObj.DisplayName);                //displayed text
-            i++;
-        })
-
-        htmlform += '</div>';
-        
-        $("div.modal-header").html("<label>Select filters to display</label>");
-        $("div.modal-body").html("");
-        $("div.modal-body").html(htmlform);
-        $("div.modal-footer > .btn-primary").prop('class', 'btn btn-primary btn-sm btn-success').text("Sumbit");
-        $("div.modal-footer > .btn-default").prop('class', 'btn btn-default btn-sm').text("Cancel");
-        $("div.modal-dialog").prop('class', 'modal-dialog modal-sm')
-        $("#myModal").modal("show", function () {});
-    }) 
-
-    /* click submit button on side panel config modal */
-    $("div.modal-footer > .btn-primary").click(function(event) {
-
-        event.preventDefault();
-
-        var i = 0;
-        $.each(dashboardColumns, function (index, columnName) {
- 
-            var chkbx_name = columnName["DisplayName"] + "_chkbox" + i;
-            var select = columnName["DisplayName"] + "_select" + i;
-                
-            var lbl_name = columnName["DisplayName"] + "_lbl" + i;
-            if ($("#" + chkbx_name).is(":checked")) {
-                $("#" + select).show();
-                $("#" + lbl_name).show();
-            }
-            else {
-                $("#" + select).hide();
-                $("#" + lbl_name).hide();
-            }
-            i++;
-        });
-        $('#myModal').modal('hide');
-    })
-   
-});
