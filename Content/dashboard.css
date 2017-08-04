@@ -37,6 +37,10 @@ div.upperLayer {
     margin-bottom: 1px;
 }
 
+div.side-panel-div select {
+    float: right;
+}
+
 .dataTables_info, .dataTables_length label {
     font-weight: 100;
 }

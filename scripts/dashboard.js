@@ -24,7 +24,7 @@ jQuery.ajaxSetup({
 /* dashboardColumns: This is te list of columns to display and properties describing how to display */
 var dashboardColumns = {}
 var dTable;
-var viewName = "";
+var viewName = "General Report";
 
 var ProjectList = {
 
@@ -465,6 +465,13 @@ var ProjectList = {
                 }
                 else {
                     restPath = path;
+                }
+
+                if (params["viewname"] != undefined) {
+                    viewName = params["viewname"];
+                }
+                else {
+                    viewName = "General Report"
                 }
 
                 $.get(restPath, function (response) {
