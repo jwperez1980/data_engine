@@ -56,23 +56,21 @@
     <script src="./scripts/resources.js"></script>
 
     <script>
-        // Call back method that passes data to DataTables constructor
-        var loadPage = function (columnOrder, data) {
-            ProjectList.displayExternalData(null, data);
-        }
 
-//        var generic = getDynamicData;
-        // onclick event when source is chosen in the select box
+        var DataEngine = null;
         $(document).ready(function () {
+
+            DataEngine = new DataTables.DataEngine();
+
             $(".chosenURL").on("click", function() { 
                 var url = $(this).attr("data-url");
 
                 if (url == "dynamic") {
-                    loadPage(null, getDynamicData());
+                    DataEngine.loadPage(null, getDynamicData());
                 }
                 else {
                     // Use AJAX to get data using the REST usel provided.  Pass callback method
-                    ProjectList.callHttpMethod(url, "GET", null, loadPage, null, null);
+                    DataEngine.callHttpMethod(url, "GET", null, DataEngine.loadPage, null, null);
 
                 }
             });
