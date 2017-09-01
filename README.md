@@ -53,7 +53,7 @@ INCLUDES:
 ```
 JavaScript (One line of JS to pass the URL to the AJAX:
 ```javascript
-ProjectList.callHttpMethod("https://swapi.co/api/people/?format=json", "GET", null, loadPage, null, null, "results");
+DataEngineObject.callHttpMethod("https://swapi.co/api/people/?format=json", "GET", null, loadPage, null, null, "results");
 ```
 
 All that is required is that the JSON be formated correctly such as follows:
